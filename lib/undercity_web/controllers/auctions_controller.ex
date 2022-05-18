@@ -17,5 +17,6 @@ defmodule UndercityWeb.AuctionsController do
 
   def create(conn, params) do
     Auctions.create_auction(params)
+    redirect(conn, to: Routes.auctions_path(conn, :index))
   end
 end

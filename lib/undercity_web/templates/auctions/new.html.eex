@@ -22,5 +22,7 @@
   :buyout_price, class: "form-control" %> <%= error_tag f, :buyout_price %>
 </div>
 
+<%= hidden_input f, :user_id, value: @current_user.id %>
+
 <div class="form-group"><%= submit "Add", class: "btn btn-primary" %></div>
 <% end %>
