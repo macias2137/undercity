@@ -30,6 +30,8 @@ defmodule UndercityWeb.Router do
       pipe_through [:ensure_auth]
       get "/", PageController, :index
       get "/auctions", AuctionsController, :index
+      get "/auctions/new", AuctionsController, :new
+      post "/auctions/new", AuctionsController, :create
       get "/users/:id", UsersController, :show
       # get "/user_auctions", AuctionsController, :index
       get "/user_favourites", FavouriteController, :index

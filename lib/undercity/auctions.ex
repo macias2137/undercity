@@ -5,7 +5,6 @@ defmodule Undercity.Auctions do
 
   alias Undercity.Auctions.Auction
 
-
   def list_auctions do
     Repo.all(Auction)
   end

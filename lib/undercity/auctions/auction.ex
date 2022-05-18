@@ -13,7 +13,7 @@ defmodule Undercity.Auctions.Auction do
   end
 
   @doc false
-  def changeset(auction, attrs) do
+  def changeset(auction, attrs \\ %{}) do
     auction
     |> cast(attrs, [:title, :description, :initial_price, :buyout_price, :user_id])
     |> validate_required([:title, :description, :initial_price, :user_id])
