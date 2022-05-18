@@ -1,4 +1,3 @@
 <h2><%= @user.username %>'s auctions</h2>
-<%= for a <- @auctions do %>
-<p><%= a.title %></p>
-<% end %>
+<%= for auction <- @auctions do %> <%= render UndercityWeb.AuctionsView,
+"_auction.html", auction: auction %> <% end %>
