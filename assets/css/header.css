@@ -1,0 +1,31 @@
+.header__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__text {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 9rem;
+  /* color: #a3267e; */
+  letter-spacing: 1rem;
+  text-shadow: 0.25rem 0.25rem #000000;
+  cursor: pointer;
+  font-style: italic;
+  color: turquoise;
+}
+
+.header__user-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__user-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  list-style-type: none;
+}
+
+.header__user-panel li {
+  order: 0;
+}

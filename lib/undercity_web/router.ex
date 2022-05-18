@@ -29,6 +29,8 @@ defmodule UndercityWeb.Router do
     scope "" do
       pipe_through [:ensure_auth]
       get "/", PageController, :index
+      get "/user_auctions", AuctionController, :index
+      get "/user_favourites", FavouriteController, :index
     end
 
     get "/login", SessionController, :new

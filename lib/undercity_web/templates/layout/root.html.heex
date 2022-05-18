@@ -17,9 +17,12 @@
             <%= render "_user_menu.html", assigns %>
           </ul>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo"/>
-        </a>
+        <div class="">
+          <a class="header__text" href="#">UNDERCITY</a>
+          <%= if @current_user do %>
+            <%= render "_user_nav.html", assigns %>
+          <% end %>
+        </div>
       </section>
     </header>
     <%= @inner_content %>
