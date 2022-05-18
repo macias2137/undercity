@@ -3,6 +3,7 @@ defmodule Undercity.Repo.Migrations.CreateAuctions do
 
   def change do
     create table(:auctions) do
+      add :title, :string, null: false
       add :description, :string, null: false
       add :initial_price, :decimal, null: false
       add :buyout_price, :decimal

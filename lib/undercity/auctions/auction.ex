@@ -3,10 +3,10 @@ defmodule Undercity.Auctions.Auction do
   import Ecto.Changeset
 
   schema "auctions" do
-    field :buyout_price, :decimal
+    field :title, :string
     field :description, :string
     field :initial_price, :decimal
-    field :expiration_date, :utc_datetime
+    field :buyout_price, :decimal
     belongs_to :user, Undercity.Users.User
 
     timestamps()
@@ -15,7 +15,7 @@ defmodule Undercity.Auctions.Auction do
   @doc false
   def changeset(auction, attrs) do
     auction
-    |> cast(attrs, [:description, :initial_price, :buyout_price, :expiration_date, :seller_id])
-    |> validate_required([:description, :initial_price])
+    |> cast(attrs, [:title, :description, :initial_price, :buyout_price, :user_id])
+    |> validate_required([:title, :description, :initial_price, :user_id])
   end
 end

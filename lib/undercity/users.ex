@@ -4,12 +4,19 @@ defmodule Undercity.Users do
   alias Undercity.Repo
 
   alias Undercity.Users.User
+  alias Undercity.Auctions.Auction
 
   def list_users do
     Repo.all(User)
   end
 
   def get_user!(id), do: Repo.get!(User, id)
+
+  def get_user_auctions(id) do
+    Auction
+    |> where([a], a.user_id == ^id)
+    |> Repo.all()
+  end
 
   def create_user(attrs \\ %{}) do
     %User{}

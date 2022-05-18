@@ -1,0 +1,4 @@
+<h2><%= @user.username %>'s auctions</h2>
+<%= for a <- @auctions do %>
+<p><%= a.title %></p>
+<% end %>

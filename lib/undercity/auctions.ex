@@ -12,6 +12,13 @@ defmodule Undercity.Auctions do
 
   def get_auction!(id), do: Repo.get!(Auction, id)
 
+  def get_user_auctions(id) do
+    Auction
+    |> where([a], a.user_id == ^id)
+    |> order_by([a], desc: a.id)
+    |> Repo.all()
+  end
+
   def create_auction(attrs \\ %{}) do
     %Auction{}
     |> Auction.changeset(attrs)
