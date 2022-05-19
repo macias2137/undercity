@@ -13,3 +13,17 @@
 .auction-container li {
   margin: 0;
 }
+
+.auction__title {
+  width: 35%;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.auction__buyout-price {
+  color: red;
+}
+
+.auction__buyout-price span {
+  font-size: 1rem;
+}

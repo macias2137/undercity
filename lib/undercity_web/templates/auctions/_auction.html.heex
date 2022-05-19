@@ -1,5 +1,10 @@
 <ul class="auction-container">
-  <li><%= @auction.title %></li>
-  <li><%= @auction.user.username %></li>
-  <li><%= @auction.initial_price %></li>
+  <li class="auction__title"><%= @auction.title %></li>
+  <li class="auction__username"><%= @auction.user.username %></li>
+  <li class="auction__initial-price"><%= @auction.initial_price %></li>
+  <%= if @auction.buyout_price do %>
+  <li class="auction__buyout-price">
+    <span>Kup teraz: </span><%= @auction.buyout_price %>
+  </li>
+  <% end %>
 </ul>
