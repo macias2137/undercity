@@ -16,6 +16,7 @@ defmodule Undercity.Users do
     Auction
     |> where([a], a.user_id == ^id)
     |> Repo.all()
+    |> Repo.preload(:user)
   end
 
   def create_user(attrs \\ %{}) do

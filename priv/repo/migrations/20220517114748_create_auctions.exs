@@ -11,5 +11,7 @@ defmodule Undercity.Repo.Migrations.CreateAuctions do
 
       timestamps()
     end
+
+    create constraint("auctions", :buyout_price_must_be_greater_than_initial_price, check: "buyout_price > initial_price")
   end
 end

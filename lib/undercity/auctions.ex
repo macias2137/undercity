@@ -6,7 +6,9 @@ defmodule Undercity.Auctions do
   alias Undercity.Auctions.Auction
 
   def list_auctions do
-    Repo.all(Auction)
+    Auction
+    |> Repo.all
+    |> Repo.preload(:user)
   end
 
   def get_auction!(id), do: Repo.get!(Auction, id)
@@ -19,8 +21,11 @@ defmodule Undercity.Auctions do
   end
 
   def create_auction(attrs \\ %{}) do
+  #  = %{"title" => title, "description" => description, "initial_price" => initial_price, "buyout_price" => buyout_price, "user_id" => user_id}
     %Auction{}
     |> Auction.changeset(attrs)
+      # %{title: title, description: description, initial_price: initial_price, buyout_price: buyout_price, user_id: user_id})
+    |> IO.inspect()
     |> Repo.insert()
   end
 

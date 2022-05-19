@@ -1,8 +1,8 @@
 <ul class="header__user-panel">
-  <li><%= link "My favourites", to: "/user_favourites" %></li>
+  <li><%= link "My favourites", to: "/favourites" %></li>
   <li><%= link "Auctions", to: "/auctions" %></li>
   <li><%= link "My auctions", to: "/users/#{@current_user.id}" %></li>
-  <li><%= link "Watchlist", to: "/user_watchlist" %></li>
-  <li><%= link "Comments", to: "comments" %></li>
+  <li><%= link "Watchlist", to: "/watchlist" %></li>
+  <li><%= link "Comments", to: "/comments" %></li>
 </ul>
 <%= link "New auction", to: "/auctions/new" %>

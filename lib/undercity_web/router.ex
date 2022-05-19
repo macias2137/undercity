@@ -33,8 +33,8 @@ defmodule UndercityWeb.Router do
       get "/auctions/new", AuctionsController, :new
       post "/auctions/new", AuctionsController, :create
       get "/users/:id", UsersController, :show
-      # get "/user_auctions", AuctionsController, :index
-      get "/user_favourites", FavouriteController, :index
+      get "/favourites", FavouriteController, :index
+      get "/watchlist", WatchlistController, :index
     end
 
     get "/login", SessionController, :new
