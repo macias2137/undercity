@@ -13,7 +13,7 @@ defmodule Undercity.Bids.Bid do
   @doc false
   def changeset(bid, attrs) do
     bid
-    |> cast(attrs, [:auction_id, :user_id, :price])
-    |> validate_required([:auction_id, :user_id, :price])
+    |> cast(attrs, [:auction_id, :user_id, :bid_value])
+    |> validate_required([:auction_id, :user_id, :bid_value])
   end
 end

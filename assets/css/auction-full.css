@@ -1,0 +1,34 @@
+.auction-full__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.auction-full__info-section {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auction-full__header h1,
+h4 {
+  margin: 0;
+}
+
+.auction-full__user-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.auction-full__user-info span {
+  font-size: 12px;
+}
+
+.auction-full__username {
+  padding-right: 2rem;
+}
+
+.auction-full__buyout-price {
+  color: red;
+}

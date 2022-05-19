@@ -6,8 +6,9 @@ defmodule Undercity.Repo.Migrations.CreateAuctions do
       add :title, :string, null: false
       add :description, :string, null: false
       add :initial_price, :decimal, null: false
+      add :end_date, :utc_datetime, null: false
       add :buyout_price, :decimal
-      add :user_id, references(:users)
+      add :user_id, references(:users), null: false
 
       timestamps()
     end

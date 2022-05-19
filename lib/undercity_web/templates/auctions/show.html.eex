@@ -1,0 +1,30 @@
+<section class="auction-full__container">
+  <div class="auction-full__info-section">
+    <h1><%= @auction.title %></h1>
+    <p><%= @auction.description %></p>
+    <div class="auction-full__user-info">
+      <h4 class="auction-full__username">
+        Seller: <%= @auction.user.username %>
+      </h4>
+      <span>Obserwuj</span>
+    </div>
+  </div>
+  <div class="auction-full__price-section">
+    <h3>Current price: <%= @auction.initial_price %></h3>
+    <h3 class="auction-full__buyout-price">
+      Buyout price: <%= @auction.buyout_price %>
+    </h3>
+
+    <%= form_for @changeset, Routes.bids_path(@conn, :create, @auction.id), fn f -> %>
+      <div class="form-group">
+          <%= label f, :bid_value, class: "control-label" %>
+          <%= text_input f, :bid_value, class: "form-control" %>
+          <%= error_tag f, :bid_value %>
+      </div>
+          <%= hidden_input f, :auction_id, value: @auction.id %>
+          <%= hidden_input f, :user_id, value: @current_user.id %>
+          <div class="form-group"><%= submit "Bid!", class: "btn btn-primary" %></div>
+    </div>
+    <% end %>
+  </div>
+</section>

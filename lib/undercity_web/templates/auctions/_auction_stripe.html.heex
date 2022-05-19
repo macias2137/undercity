@@ -1,0 +1,11 @@
+<ul class="auction-stripe__container">
+  <li class="auction-stripe__title"><%= @auction.title %></li>
+  <li class="auction-stripe__username"><%= @auction.user.username %></li>
+  <li class="auction-stripe__initial-price"><%= @auction.initial_price %></li>
+  <%= if @auction.buyout_price do %>
+  <li class="auction-stripe__buyout-price">
+    <span>Kup teraz: </span><%= @auction.buyout_price %>
+  </li>
+  <% end %>
+  <li><%= link "More...", to: "/auctions/#{@auction.id}" %></li>
+</ul>

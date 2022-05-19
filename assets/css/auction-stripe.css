@@ -1,4 +1,4 @@
-.auction-container {
+.auction-stripe__container {
   display: flex;
   flex-direction: row;
   border: solid 1px red;
@@ -10,20 +10,30 @@
   list-style-type: none;
 }
 
-.auction-container li {
+.auction-stripe__container li {
   margin: 0;
 }
 
-.auction__title {
+.auction-stripe__title {
   width: 35%;
   font-weight: 700;
   overflow: hidden;
 }
 
-.auction__buyout-price {
+.auction-stripe__buyout-price {
   color: red;
 }
 
-.auction__buyout-price span {
+.auction-stripe__buyout-price span {
   font-size: 1rem;
+}
+
+.auction-stripe__show-more {
+  width: 40px;
+  height: 40px;
+}
+
+.auction-stripe__show-more img {
+  width: 100%;
+  height: 100%;
 }

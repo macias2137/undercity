@@ -4,3 +4,5 @@ alias Undercity.Comments.Comment
 alias Undercity.Auctions
 alias Undercity.Auctions.Auction
 alias Undercity.Repo
+alias Undercity.Bids
+alias Undercity.Bids.Bid

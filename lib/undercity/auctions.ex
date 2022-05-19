@@ -11,7 +11,11 @@ defmodule Undercity.Auctions do
     |> Repo.preload(:user)
   end
 
-  def get_auction!(id), do: Repo.get!(Auction, id)
+  def get_auction!(id) do
+    Auction
+    |> Repo.get(id)
+    |> Repo.preload(:user)
+  end
 
   def get_user_auctions(id) do
     Auction

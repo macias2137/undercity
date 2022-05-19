@@ -1,103 +1,48 @@
 defmodule Undercity.Bids do
-  @moduledoc """
-  The Bids context.
-  """
 
   import Ecto.Query, warn: false
   alias Undercity.Repo
-
   alias Undercity.Bids.Bid
+  alias Undercity.Auctions
 
-  @doc """
-  Returns the list of bids.
-
-  ## Examples
-
-      iex> list_bids()
-      [%Bid{}, ...]
-
-  """
   def list_bids do
     Repo.all(Bid)
   end
 
-  @doc """
-  Gets a single bid.
-
-  Raises `Ecto.NoResultsError` if the Bid does not exist.
-
-  ## Examples
-
-      iex> get_bid!(123)
-      %Bid{}
-
-      iex> get_bid!(456)
-      ** (Ecto.NoResultsError)
-
-  """
   def get_bid!(id), do: Repo.get!(Bid, id)
 
-  @doc """
-  Creates a bid.
+  def get_bids_by_auction_id(auction_id) do
+    Bid
+    |> where([b], b.auction_id == ^auction_id)
+    |> Repo.all()
+  end
 
-  ## Examples
+  def get_highest_bid_by_auction_id(auction_id) do
+    Bid
+    |> where([b], b.auction_id == ^auction_id)
+    # |> select([b], max(b.bid_value))
+    |> order_by([b], desc: b.bid_value)
+    |> limit(1)
+    |> preload(:user)
+    |> Repo.one()
+  end
 
-      iex> create_bid(%{field: value})
-      {:ok, %Bid{}}
-
-      iex> create_bid(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_bid(attrs \\ %{}) do
     %Bid{}
     |> Bid.changeset(attrs)
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a bid.
-
-  ## Examples
-
-      iex> update_bid(bid, %{field: new_value})
-      {:ok, %Bid{}}
-
-      iex> update_bid(bid, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def update_bid(%Bid{} = bid, attrs) do
     bid
     |> Bid.changeset(attrs)
     |> Repo.update()
   end
 
-  @doc """
-  Deletes a bid.
-
-  ## Examples
-
-      iex> delete_bid(bid)
-      {:ok, %Bid{}}
-
-      iex> delete_bid(bid)
-      {:error, %Ecto.Changeset{}}
-
-  """
   def delete_bid(%Bid{} = bid) do
     Repo.delete(bid)
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking bid changes.
-
-  ## Examples
-
-      iex> change_bid(bid)
-      %Ecto.Changeset{data: %Bid{}}
-
-  """
   def change_bid(%Bid{} = bid, attrs \\ %{}) do
     Bid.changeset(bid, attrs)
   end
