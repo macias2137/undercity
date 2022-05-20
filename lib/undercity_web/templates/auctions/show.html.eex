@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="auction-full__price-section">
-    <h3>Current price: <%= @auction.initial_price %></h3>
+    <h3>Current price: <%= @highest_bid.bid_value || @auction.initial_price %></h3>
     <h3 class="auction-full__buyout-price">
       Buyout price: <%= @auction.buyout_price %>
     </h3>

@@ -1,2 +1,2 @@
 <%= for auction <- @auctions do %><%= render "_auction_stripe.html", auction:
-auction %> <% end %>
+auction, highest_bids: @highest_bids %> <% end %>

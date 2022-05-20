@@ -3,11 +3,14 @@ defmodule UndercityWeb.AuctionsController do
 
   alias Undercity.Auctions
   alias Undercity.Auctions.Auction
+  alias Undercity.Bids
   alias Undercity.Bids.Bid
 
   def index(conn, _params) do
     auctions = Auctions.list_auctions()
-    render(conn, "index.html", auctions: auctions)
+    highest_bids = Bids.get_highest_bids()
+    # highest_bid = Bids.get_highest_bid_by_auction_id(id)
+    render(conn, "index.html", auctions: auctions, highest_bids: highest_bids)
   end
 
   def new(conn, _params) do
@@ -33,6 +36,7 @@ defmodule UndercityWeb.AuctionsController do
   def show(conn, %{"id" => id}) do
     auction = Auctions.get_auction!(id)
     changeset = Bid.changeset(%Bid{}, %{})
-    render(conn, "show.html", auction: auction, changeset: changeset)
+    highest_bid = Bids.get_highest_bid_by_auction_id(id)
+    render(conn, "show.html", auction: auction, changeset: changeset, highest_bid: highest_bid)
   end
 end
