@@ -10,22 +10,29 @@
     </div>
   </div>
   <div class="auction-full__price-section">
-    <h3>Current price: <%= @auction.initial_price %></h3>
-    <h3 class="auction-full__buyout-price">
-      Buyout price: <%= @auction.buyout_price %>
-    </h3>
-
+    <%= if @highest_bid do %>
+      <h3>Current price: <%= @highest_bid.bid_value %></h3>
+    <%= else %>
+      <h3>Current price: <%= @auction.initial_price %></h3>
+    <% end %>
+    <%= if @highest_bid && @auction.buyout_price && @highest_bid.bid_value < @auction.buyout_price do %>
+      <h3 class="auction-full__buyout-price">
+        Buyout price: <%= @auction.buyout_price %>
+      </h3>
+    <%= else %>
+      <h4>Buyout price has been exceeded, so this option is no longer available.</h4>
+    <% end %>
     <%= form_for @changeset, Routes.bids_path(@conn, :create, @auction.id), fn f -> %>
       <div class="form-group">
-          <%= label f, :bid_value, class: "control-label" %>
-          <%= text_input f, :bid_value, class: "form-control" %>
-          <%= error_tag f, :bid_value %>
+        <%= label f, :bid_value, class: "control-label" %>
+        <%= text_input f, :bid_value, class: "form-control" %>
+        <%= error_tag f, :bid_value %>
       </div>
-          <%= hidden_input f, :auction_id, value: @auction.id %>
-          <%= hidden_input f, :bidder_id, value: @current_user.id %>
-          <%= hidden_input f, :seller_id, value: @auction.seller_id %>
-          <div class="form-group"><%= submit "Bid!", class: "btn btn-primary" %></div>
-    </div>
+        <%= hidden_input f, :auction_id, value: @auction.id %>
+        <%= hidden_input f, :bidder_id, value: @current_user.id %>
+        <%= hidden_input f, :seller_id, value: @auction.seller_id %>
+        <div class="form-group"><%= submit "Bid!", class: "btn btn-primary" %></div>
+      </div>
     <% end %>
   </div>
 </section>

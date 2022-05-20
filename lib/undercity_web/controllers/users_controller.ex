@@ -7,7 +7,7 @@ defmodule UndercityWeb.UsersController do
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     auctions = Users.get_user_auctions(id)
-    highest_bid = Bids.get_highest_bid_by_auction_id(id)
-    render(conn, "show.html", user: user, auctions: auctions, highest_bid: highest_bid)
+    highest_bids = Bids.get_highest_bids_in_user_auctions(id)
+    render(conn, "show.html", user: user, auctions: auctions, highest_bids: highest_bids)
   end
 end

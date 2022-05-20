@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
+.auction-full__price-section {
+  width: 40%;
+}
+
 .auction-full__header h1,
 h4 {
   margin: 0;

@@ -2,6 +2,7 @@
   <li class="auction-stripe__title"><%= @auction.title %></li>
   <li class="auction-stripe__username"><%= @auction.seller.username %></li>
   <li class="auction-stripe__initial-price"></li>
+  <li><%= @highest_bids[@auction.id] || @auction.initial_price %></li>
   <%= if @auction.buyout_price do %>
   <li class="auction-stripe__buyout-price">
     <span>Kup teraz: </span><%= @auction.buyout_price %>
