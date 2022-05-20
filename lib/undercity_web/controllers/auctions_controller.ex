@@ -8,9 +8,11 @@ defmodule UndercityWeb.AuctionsController do
 
   def index(conn, _params) do
     auctions = Auctions.list_auctions()
-    highest_bids = Bids.get_highest_bids()
+    # highest_bids = Bids.get_highest_bids()
     # highest_bid = Bids.get_highest_bid_by_auction_id(id)
-    render(conn, "index.html", auctions: auctions, highest_bids: highest_bids)
+    render(conn, "index.html", auctions: auctions
+    # highest_bids: highest_bids
+    )
   end
 
   def new(conn, _params) do

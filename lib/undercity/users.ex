@@ -14,9 +14,9 @@ defmodule Undercity.Users do
 
   def get_user_auctions(id) do
     Auction
-    |> where([a], a.user_id == ^id)
+    |> where([a], a.seller_id == ^id)
     |> Repo.all()
-    |> Repo.preload(:user)
+    |> Repo.preload(:seller)
   end
 
   def create_user(attrs \\ %{}) do

@@ -4,6 +4,7 @@ defmodule Undercity.Watchlist.Observation do
 
   schema "observations" do
     belongs_to :user, Undercity.Users.User
+    belongs_to :observed_user, Undercity.Users.User
 
     timestamps()
   end

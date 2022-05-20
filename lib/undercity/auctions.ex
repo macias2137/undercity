@@ -8,13 +8,13 @@ defmodule Undercity.Auctions do
   def list_auctions do
     Auction
     |> Repo.all
-    |> Repo.preload(:user)
+    |> Repo.preload(:seller)
   end
 
   def get_auction!(id) do
     Auction
     |> Repo.get(id)
-    |> Repo.preload(:user)
+    |> Repo.preload(:seller)
   end
 
   def get_user_auctions(id) do

@@ -1,4 +1,3 @@
 <h2><%= @user.username %>'s auctions</h2>
 <%= for auction <- @auctions do %> <%= render UndercityWeb.AuctionsView,
-"_auction_stripe.html", auction: auction, highest_bids: @highest_bids%> <% end
-%>
+"_auction_stripe.html", auction: auction %> <% end %>

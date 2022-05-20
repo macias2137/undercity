@@ -23,7 +23,7 @@ defmodule Undercity.Bids do
     |> where([b], b.auction_id == ^auction_id)
     |> order_by([b], desc: b.bid_value)
     |> limit(1)
-    |> preload(:user)
+    |> preload(:bidder)
     |> Repo.one()
   end
 
@@ -36,16 +36,17 @@ defmodule Undercity.Bids do
     |> Map.new()
   end
 
-  def get_highest_bids_in_user_auctions(user_id) do
-    Bid
-    |> preload(:user)
-    |> where([b], b.user.id == ^user_id)
-    |> Repo.all()
-  end
+  # def get_highest_bids_in_user_auctions(user_id) do
+  #   Bid
+  #   |> preload(:user)
+  #   |> where([b], b.user.id == ^user_id)
+  #   |> Repo.all()
+  # end
 
   def create_bid(attrs \\ %{}) do
     %Bid{}
     |> Bid.changeset(attrs)
+    |> IO.inspect()
     |> Repo.insert()
   end
 
